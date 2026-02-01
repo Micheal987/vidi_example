@@ -1,0 +1,14 @@
+[package]
+name = "vidi_example"
+version = "0.1.0"
+edition = "2024"
+
+[workspace]
+members = ["cookie_example"]
+[workspace.dependencies]
+vidi = "0.1.0"
+tokio = { version = "1.49.0", features = ["full"] }
+sessions = { version = "0.7.0", features = ["memory"] }
+nano-id = "0.4.0"
+xid = "1.1.1"
+[dependencies]
