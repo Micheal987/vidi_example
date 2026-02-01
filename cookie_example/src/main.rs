@@ -35,7 +35,7 @@ async fn profile(req: Request) -> Result<String> {
     if let Some(username) = req.session().get::<String>("username")? {
         Ok(format!("用户信息: {}", username))
     } else {
-        Ok("请先登录！".to_string())
+        Ok(String::from("请先登录！"))
     }
 }
 
@@ -57,20 +57,20 @@ async fn add_to_cart(req: Request) -> Result<String> {
 async fn view_cart(req: Request) -> Result<String> {
     if let Some(cart) = req.session().get::<Vec<String>>("cart")? {
         if cart.is_empty() {
-            Ok("购物车是空的".to_string())
+            Ok(String::from("购物车是空的"))
         } else {
             let items = cart.join(", ");
             Ok(format!("购物车中的商品: {}", items))
         }
     } else {
-        Ok("购物车是空的".to_string())
+        Ok(String::from("购物车是空的"))
     }
 }
 
 //remove  清空购物车
 async fn clear_cart(req: Request) -> Result<String> {
     if let Some(_) = req.session().remove("cart") {
-        return Ok("购物车已清空！".to_string());
+        return Ok(String::from("购物车已清空！"));
     } else {
         return Err(vidi::StatusCode::INTERNAL_SERVER_ERROR.into_error());
     }
@@ -82,7 +82,7 @@ async fn logout(req: Request) -> Result<String> {
     if ok.is::<vidi::Error>() {
         return Err(vidi::StatusCode::INTERNAL_SERVER_ERROR.into_error());
     }
-    Ok("您已成功退出登录！".to_string())
+    Ok(String::from("您已成功退出登录！"))
 }
 
 //  get name 获取所有会话数据
