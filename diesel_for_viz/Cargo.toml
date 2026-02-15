@@ -1,0 +1,12 @@
+[package]
+name = "diesel_for_viz"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+diesel = { version = "2.2.0", features = ["postgres", "r2d2"] }
+dotenvy = "0.15"
+serde = { version = "1.0.228", features = ["derive"] }
+vidi = "0.1.0"
+nano-id = "0.4.0"
+tokio = { version = "1.49.0", features = ["full"] }
